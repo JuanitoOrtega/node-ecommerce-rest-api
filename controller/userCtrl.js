@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
 const { generateToken } = require('../config/jwtToken');
-const validateMongoDbId = require('../utils/validateMongodbId');
+const { validateMongoDbId } = require('../utils/validateMongodbId');
 const { generateRefreshToken } = require('../config/refreshToken');
 const Cart = require('../models/cartModel');
 const Product = require('../models/productModel');
