@@ -2,7 +2,7 @@ const Product = require('../models/productModel');
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
 const slugify = require('slugify');
-const validateMongodbId = require('../utils/validateMongodbId');
+const validateMongodbId = require('../utils/validateMongoDbId');
 const { cloudinaryUploadImg } = require('../utils/cloudinary');
 const fs = require('fs');
 
