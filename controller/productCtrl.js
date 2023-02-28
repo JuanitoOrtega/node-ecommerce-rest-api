@@ -2,7 +2,7 @@ const Product = require('../models/productModel');
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
 const slugify = require('slugify');
-const { validateMongoDbId } = require('../utils/validateMongoDbId');
+const validateMongodbId = require('../utils/validateMongodbId');
 const { cloudinaryUploadImg } = require('../utils/cloudinary');
 const fs = require('fs');
 
@@ -22,7 +22,7 @@ const createProduct = asyncHandler(async (req, res) => {
 // Update a product
 const updateProduct = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    validateMongoDbId(id);
+    validateMongodbId(id);
     try {
         if (req.body.title) {
             req.body.slug = slugify(req.body.title);
@@ -39,7 +39,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 // Delete a product
 const deleteProduct = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    validateMongoDbId(id);
+    validateMongodbId(id);
     try {
         const deleteProduct = await Product.findByIdAndDelete(id);
         res.json(deleteProduct);
@@ -201,7 +201,7 @@ const rating = asyncHandler(async (req, res) => {
 
 const uploadImages = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    validateMongoDbId(id);
+    validateMongodbId(id);
     // console.log(req.files);
     try {
         const uploader = (path) => cloudinaryUploadImg(path, 'images');
