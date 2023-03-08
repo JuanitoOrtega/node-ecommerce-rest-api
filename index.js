@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const cors = require('cors');
 const dbConnect = require('./config/dbConnect');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const app = express();
@@ -15,6 +16,12 @@ const couponRouter = require('./routes/couponRoute');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 dbConnect();
+
+const corsOptions = {
+    origin: 'http://localhost:3000'
+}
+  
+app.use(cors(corsOptions));
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
